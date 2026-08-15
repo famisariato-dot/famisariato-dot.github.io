@@ -1,0 +1,1949 @@
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Famisariato | Licorería Ecuador</title>
+    <link href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGHRUsu6jlsQJZYIL4ktbArd6JFm0a47wQwg&s ">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --wine-deep: #2B0614;
+            --wine-dark: #3B0918;
+            --wine-red: #722F37;
+            --wine-mid: #8B3A45;
+            --gold: #D4AF37;
+            --gold-bright: #E8C84A;
+            --gold-light: #F3E5AB;
+            --gold-pale: #FBF5E3;
+            --bg-void: #0A0A0A;
+            --bg-dark: #121212;
+            --charcoal: #1A1A1A;
+            --charcoal-light: #222222;
+            --text-light: #F9F9F9;
+            --text-muted: #B0A89A;
+            --glass: rgba(20, 20, 20, 0.6);
+            --glass-strong: rgba(18, 18, 18, 0.85);
+            --glass-border: rgba(212, 175, 55, 0.3);
+            --glass-border-hover: rgba(212, 175, 55, 0.6);
+            --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.6);
+            --shadow-gold: 0 8px 32px rgba(212, 175, 55, 0.25);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 40px;
+            --radius-full: 60px;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+            --transition-bounce: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-void);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image:
+                radial-gradient(ellipse at 20% 10%, rgba(212, 175, 55, 0.04) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 50%, rgba(114, 47, 55, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 50% 90%, rgba(212, 175, 55, 0.03) 0%, transparent 50%);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        ::selection {
+            background: rgba(212, 175, 55, 0.4);
+            color: #fff;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), var(--wine-red));
+            border-radius: 10px;
+        }
+
+        header {
+            height: 100vh;
+            min-height: 650px;
+            position: relative;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.55), rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.96)),
+                url('https://scontent-mia3-1.xx.fbcdn.net/v/t39.30808-6/472843090_1062516338956209_4949046812582548569_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=7b2446&_nc_ohc=lLNvBEQD-q8Q7kNvwH0gc5F&_nc_oc=AdpE7_sbPKfbUageVZ--nNqlvIHR1O8crrxDuqJaoy2KomSAqXZPsHUfBfr7NzkIp4I2dRMOb8mZpvVZ8rlxmk3m&_nc_zt=23&_nc_ht=scontent-mia3-1.xx&_nc_gid=nP_ZW4QAyOBM22Qv1WL8PQ&_nc_ss=7a389&oh=00_Af1QcV-3RxNj7V-RU_kNTNj7ge6UY3LOV7zWuautFjjzHg&oe=69DA2B1D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to top, var(--bg-void) 0%, transparent 100%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(114, 47, 55, 0.1) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -60px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.7), rgba(212, 175, 55, 0.15));
+            border-radius: 50%;
+            box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.5), 0 0 15px rgba(212, 175, 55, 0.2);
+            animation: rise linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(0.4);
+                opacity: 0;
+            }
+            15% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-115vh) scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        .particula-dorada {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 6px var(--gold-bright), 0 0 12px rgba(212, 175, 55, 0.6);
+            animation: floatUp linear infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-110vh) translateX(40px);
+                opacity: 0;
+            }
+        }
+
+        .hero-content {
+            z-index: 10;
+            animation: fadeInUp 1.5s ease-out;
+            width: 100%;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            font-size: 2.6rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
+            font-weight: 800;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(212, 175, 55, 0.2);
+            font-family: 'Playfair Display', serif;
+        }
+
+        h1 {
+            font-size: 5.5rem;
+            margin-bottom: 35px;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, 0.9), 0 0 80px rgba(212, 175, 55, 0.3);
+            color: var(--gold-pale);
+            letter-spacing: 3px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 30px;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-badge {
+                font-size: 0.7rem;
+                letter-spacing: 3px;
+                padding: 6px 16px;
+            }
+            .hero-subtitle {
+                font-size: 1.3rem;
+                letter-spacing: 5px;
+            }
+            h1 {
+                font-size: 2.6rem;
+                letter-spacing: 1px;
+            }
+            .hero-divider {
+                width: 50px;
+                margin-bottom: 20px;
+            }
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 680px;
+            margin: 0 auto;
+            background: var(--glass-strong);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 8px 8px 8px 20px;
+            border-radius: var(--radius-full);
+            border: 1.5px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow-gold), 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all var(--transition-smooth);
+        }
+        .search-wrapper:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.12), 0 12px 40px rgba(212, 175, 55, 0.3);
+            transform: translateY(-2px);
+        }
+        .search-wrapper:hover {
+            border-color: var(--glass-border-hover);
+        }
+        .search-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            padding: 16px 10px;
+            color: var(--gold-light);
+            font-size: 1.15rem;
+            outline: none;
+            font-family: 'Lato', sans-serif;
+            letter-spacing: 0.5px;
+        }
+        .search-input::placeholder {
+            color: rgba(212, 175, 55, 0.45);
+            font-style: italic;
+            font-weight: 300;
+        }
+        .search-btn {
+            background: linear-gradient(135deg, var(--gold), #B8860B);
+            color: var(--wine-deep);
+            border: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+        .search-btn:hover {
+            transform: scale(1.08) rotate(10deg);
+            background: linear-gradient(135deg, var(--gold-bright), #D4AF37);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.55);
+        }
+
+        .filters-section {
+            max-width: 1200px;
+            margin: 50px auto 15px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 35px;
+        }
+        .filter-btn {
+            background: rgba(20, 20, 20, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(212, 175, 55, 0.2);
+            padding: 13px 30px;
+            border-radius: 50px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition-smooth);
+            letter-spacing: 1.5px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .filter-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50px;
+            background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.08));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .filter-btn:hover::before {
+            opacity: 1;
+        }
+        .filter-btn i {
+            margin-right: 10px;
+            color: var(--gold);
+            transition: color 0.3s;
+        }
+        .filter-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold-light);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--gold), #B8860B);
+            color: #1a1a1a;
+            border-color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            font-weight: 800;
+        }
+        .filter-btn.active i {
+            color: #1a1a1a;
+        }
+
+        section {
+            padding: 50px 20px 80px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+        .section-header .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .section-header h2 {
+            font-size: 3.2rem;
+            color: var(--gold-light);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--wine-red), transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
+            padding: 0 5px;
+        }
+
+        .card {
+            position: relative;
+            height: 500px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: var(--shadow-card);
+            transition: transform var(--transition-bounce), box-shadow var(--transition-smooth);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            background: #0f0f0f;
+        }
+        .card:hover {
+            transform: translateY(-14px);
+            box-shadow: 0 28px 55px rgba(212, 175, 55, 0.2), 0 10px 25px rgba(0, 0, 0, 0.7);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        .card-shimmer {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center,
+                    rgba(255, 255, 255, 0.06) 0%,
+                    transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+            z-index: 5;
+            transform: rotate(25deg);
+        }
+        .card:hover .card-shimmer {
+            opacity: 1;
+        }
+        .card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+            filter: brightness(0.85);
+        }
+        .card:hover .card-img {
+            transform: scale(1.1);
+            filter: brightness(0.95);
+        }
+        .card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top,
+                    rgba(10, 10, 10, 1) 12%,
+                    rgba(10, 10, 10, 0.88) 50%,
+                    transparent 100%);
+            padding: 30px 22px 22px;
+            transform: translateY(15px);
+            transition: transform 0.45s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 6;
+        }
+        .card:hover .card-overlay {
+            transform: translateY(0);
+        }
+        .card-badge-top {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, var(--gold), #B8860B);
+            color: #0a0a0a;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            z-index: 7;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 4px;
+            letter-spacing: 1.5px;
+            color: var(--gold-pale);
+            font-weight: 700;
+        }
+        .card-meta {
+            display: flex;
+            gap: 12px;
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .card-meta .meta-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+        .price-list {
+            font-size: 0.78rem;
+            color: #ccc;
+            margin-top: 10px;
+            line-height: 1.5;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        .price-list span {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #e8d9a0;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            font-size: 0.73rem;
+            letter-spacing: 0.5px;
+        }
+        .card-cta-hint {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 8px;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+        }
+        .card:hover .card-cta-hint {
+            color: var(--gold);
+        }
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 70px;
+            background: rgba(212, 175, 55, 0.03);
+            border-radius: var(--radius-xl);
+            color: var(--text-muted);
+            border: 1px dashed rgba(212, 175, 55, 0.2);
+        }
+        .no-results i {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            display: block;
+            opacity: 0.6;
+        }
+
+        .features-bar {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 30px auto 50px;
+            padding: 25px 30px;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(8px);
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .feature-item i {
+            font-size: 1.5rem;
+            color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+            padding: 10px;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-section {
+            background: linear-gradient(160deg, #0a0a0a 0%, #111 50%, #0d0d0d 100%);
+            border-top: 2px solid rgba(212, 175, 55, 0.4);
+            border-bottom: 2px solid rgba(212, 175, 55, 0.4);
+            padding: 45px 20px;
+            margin-top: 50px;
+            position: relative;
+        }
+        .cart-section::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: var(--gold);
+            border-radius: 0 0 3px 3px;
+        }
+        .cart-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .cart-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .cart-header h3 {
+            font-size: 2.2rem;
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+        }
+        .cart-items-list {
+            background: #141414;
+            border-radius: var(--radius-lg);
+            padding: 20px 25px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.4);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 1px solid #252525;
+            flex-wrap: wrap;
+            gap: 10px;
+            transition: background 0.3s;
+        }
+        .cart-item:hover {
+            background: rgba(255, 255, 255, 0.01);
+            margin: 0 -10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 8px;
+        }
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+        .cart-item-info {
+            flex: 3;
+            font-size: 1rem;
+        }
+        .cart-item-name {
+            font-weight: bold;
+            color: var(--gold-light);
+            letter-spacing: 0.5px;
+        }
+        .cart-item-detail {
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 2px;
+        }
+        .cart-item-price {
+            flex: 1;
+            text-align: right;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.05rem;
+            letter-spacing: 1px;
+        }
+        .remove-item {
+            background: rgba(255, 70, 70, 0.15);
+            border: 1px solid rgba(255, 100, 100, 0.3);
+            color: #ff9999;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 8px 14px;
+            border-radius: 40px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .remove-item:hover {
+            background: #e63946;
+            color: white;
+            border-color: #e63946;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.4);
+        }
+        .cart-totals {
+            background: #0c0c0c;
+            border-radius: var(--radius-lg);
+            padding: 25px 30px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+        .total-row-cart {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.05rem;
+            margin: 10px 0;
+            color: #bbb;
+            letter-spacing: 0.5px;
+        }
+        .total-row-cart.final {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--gold);
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            margin-top: 12px;
+        }
+        .btn-whatsapp-final {
+            width: 100%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: none;
+            padding: 18px;
+            border-radius: var(--radius-full);
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            margin-top: 25px;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            transition: all var(--transition-bounce);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .btn-whatsapp-final:hover {
+            transform: scale(1.03);
+            filter: brightness(1.08);
+            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.45);
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+            color: #777;
+            font-style: italic;
+        }
+        .empty-cart i {
+            font-size: 2.5rem;
+            color: rgba(212, 175, 55, 0.3);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: radial-gradient(circle at 10% 15%, #282418, #0f0e0a);
+            width: 90%;
+            max-width: 500px;
+            border-radius: var(--radius-xl);
+            border: 1.5px solid var(--glass-border);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85), 0 0 80px rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+            animation: modalFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        .modal-header {
+            background: linear-gradient(115deg, #000000dd, #2c241add);
+            padding: 20px 28px;
+            border-bottom: 2px solid var(--gold);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .modal-header h3 {
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .close-modal {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--gold);
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+        .close-modal:hover {
+            color: #fff;
+            background: rgba(255, 70, 70, 0.3);
+            border-color: #e63946;
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            padding: 25px 28px 30px;
+        }
+        .option-group {
+            margin-bottom: 22px;
+        }
+        .option-group label {
+            display: block;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+        .radio-group {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .radio-group label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.08);
+            padding: 8px 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #e0d8c0;
+            font-size: 0.85rem;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            transition: all 0.3s;
+        }
+        .radio-group label:hover {
+            background: rgba(212, 175, 55, 0.18);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        .radio-group input {
+            accent-color: var(--gold);
+            width: 17px;
+            height: 17px;
+        }
+        .price-badge {
+            font-size: 0.75rem;
+            background: #000000aa;
+            padding: 3px 10px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: var(--gold-bright);
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            background: #1c1a14;
+            width: fit-content;
+            padding: 6px 22px;
+            border-radius: 60px;
+            border: 1.5px solid rgba(212, 175, 55, 0.35);
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+        .qty-btn {
+            background: var(--gold);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: #1a1a1a;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(212, 175, 55, 0.3);
+        }
+        .qty-btn:hover {
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.5);
+            transform: scale(1.05);
+        }
+        .qty-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+            color: var(--gold-light);
+            letter-spacing: 1px;
+        }
+        .totales {
+            background: #0c0a07;
+            padding: 18px 20px;
+            border-radius: var(--radius-md);
+            margin: 22px 0;
+            border-left: 4px solid var(--gold);
+            box-shadow: inset 0 1px 6px rgba(0, 0, 0, 0.5);
+        }
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            margin: 5px 0;
+            color: #bbb;
+        }
+        .total-row.total-final {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: var(--gold);
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
+            padding-top: 12px;
+            margin-top: 8px;
+        }
+        .btn-add-cart {
+            width: 100%;
+            background: linear-gradient(135deg, var(--gold), #b8860b);
+            border: none;
+            padding: 14px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            cursor: pointer;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            letter-spacing: 1px;
+            transition: all var(--transition-bounce);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+        }
+        .btn-add-cart:hover {
+            background: linear-gradient(135deg, #f3cf5a, #d4af37);
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+        }
+        .btn-ubicacion {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--gold);
+            padding: 12px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--gold);
+            cursor: pointer;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .btn-ubicacion:hover {
+            background: rgba(212, 175, 55, 0.15);
+            border-color: var(--gold-bright);
+        }
+
+        footer {
+            background: #060606;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 50px 20px 35px;
+            text-align: center;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            border-radius: 0 0 2px 2px;
+        }
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+        .footer-tagline {
+            color: #666;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            color: #555;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .social-links a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.06);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #1a2418, #0d160d);
+            color: var(--gold-light);
+            padding: 15px 26px;
+            border-radius: 50px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 175, 55, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+            z-index: 2100;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            animation: slideInRight 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            max-width: 90vw;
+        }
+        @keyframes slideInRight {
+            from {
+                transform: translateX(110%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .toast-notification i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 20px;
+            }
+            .card {
+                height: 420px;
+            }
+            .section-header h2 {
+                font-size: 2.2rem;
+            }
+            .cart-header h3 {
+                font-size: 1.6rem;
+            }
+            .features-bar {
+                gap: 20px;
+                padding: 18px 15px;
+            }
+            .feature-item {
+                font-size: 0.75rem;
+                gap: 8px;
+            }
+            .feature-item i {
+                width: 34px;
+                height: 34px;
+                font-size: 1.1rem;
+            }
+            .filter-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+                letter-spacing: 1px;
+            }
+        }
+        @media (max-width: 550px) {
+            .modal-content {
+                width: 95%;
+                max-width: 95%;
+                border-radius: var(--radius-md);
+            }
+            .modal-body {
+                padding: 18px;
+            }
+            .toast-notification {
+                bottom: 20px;
+                right: 10px;
+                left: 10px;
+                max-width: calc(100vw - 20px);
+                font-size: 0.8rem;
+                padding: 12px 18px;
+                border-radius: 40px;
+            }
+            .search-input {
+                font-size: 0.95rem;
+                padding: 12px 6px;
+            }
+            .search-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+                letter-spacing: 4px;
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="bubbles-container"></div>
+        <div class="hero-content">
+            <span class="hero-badge">✦ Premium Selection ✦</span>
+            <p class="hero-subtitle"><i class="fas fa-wine-glass-alt"></i> FAMISARIATO <i class="fas fa-wine-bottle"></i></p>
+            <h1>Busca tus Opciones</h1>
+            <div class="hero-divider"></div>
+            <div class="search-wrapper">
+                <input type="text" class="search-input" id="searchInput" placeholder="Busca tu producto (ej: Corona, Heineken, Pilsener, Coca Cola)...">
+                <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <div class="features-bar reveal">
+        <div class="feature-item"><i class="fas fa-truck-fast"></i> Hacemos entrega</div>
+        <div class="feature-item"><i class="fas fa-certificate"></i> Un buen producto</div>
+        <div class="feature-item"><i class="fas fa-clock"></i> Atención al cliente</div>
+        <div class="feature-item"><i class="fas fa-tags"></i> Mejores precios</div>
+    </div>
+
+    <div class="filters-section reveal">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all"><i class="fas fa-wine-bottle"></i> TODOS</button>
+            <button class="filter-btn" data-filter="cerveza"><i class="fas fa-beer"></i> CERVEZAS</button>
+            <button class="filter-btn" data-filter="vino"><i class="fas fa-wine-glass-alt"></i> VINOS & LICORES</button>
+            <button class="filter-btn" data-filter="bebidas"><i class="fas fa-glass-whiskey"></i> BEBIDAS & SNACKS</button>
+        </div>
+    </div>
+
+    <section id="coleccion">
+        <div class="section-header reveal">
+            <span class="section-label">Catálogo Exclusivo</span>
+            <h2>Nuestra Selección</h2>
+            <p>Descubre nuestra cuidada selección de cervezas, vinos, licores, refrescos y snacks con los mejores precios del mercado.</p>
+        </div>
+        <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+
+    <div class="cart-section">
+        <div class="cart-container">
+            <div class="cart-header"><h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3></div>
+            <div id="cartItemsContainer" class="cart-items-list"></div>
+            <div id="cartTotals" class="cart-totals"></div>
+            <button id="finalWhatsappBtn" class="btn-whatsapp-final"><i class="fab fa-whatsapp"></i> PEDIR AHORA POR WHATSAPP</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-logo"><i class="fas fa-wine-glass-alt"></i> FAMISARIATO</div>
+        <p class="footer-tagline">Licorería Premium · Ecuador</p>
+        <div class="social-links">
+            <a href="https://share.google/kTlrTUdCtLIGalfYl" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+            <a href="https://share.google/41CYvIhmBRL8FEY60" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=593979017728&text=Hola!%20quiero%20comprar%20en%20su%20licoreria" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i></a>
+        </div>
+    </footer>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalProductTitle">Producto</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="option-group"><label>📦 Elige presentación:</label><div id="optionsRadios" class="radio-group"></div><div id="noOptionsMsg" style="display:none; color:#ffaa66; font-size:0.75rem;">Solo una opción disponible</div></div>
+                <div class="option-group"><label>🔢 Cantidad:</label><div class="quantity-control"><button class="qty-btn" id="decrementQty">−</button><span id="qtyValue" class="qty-number">1</span><button class="qty-btn" id="incrementQty">+</button></div></div>
+                <div class="totales"><div class="total-row"><span>Subtotal:</span><span id="subtotalSpan">$0.00</span></div><div class="total-row total-final"><span>Total a pagar:</span><span id="totalSpan">$0.00</span></div></div>
+                <button class="btn-add-cart" id="addToCartBtn"><i class="fas fa-cart-plus"></i> AGREGAR AL CARRITO</button>
+                <button class="btn-ubicacion" id="ubicacionBtn">📍 UBICACIÓN</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==================== CATÁLOGO COMPLETO (PRECIOS ACTUALIZADOS) ====================
+        const productosRaw = [
+            // CERVEZAS
+            { grupo: "Cerveza", nombre: "PILSENER LATA 269CC", presentacion: "CAJA", precio: 20.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 269CC", presentacion: "SIXPACK", precio: 5.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 269CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 355CC", presentacion: "CAJA", precio: 23.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 355CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 355CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 473CC", presentacion: "CAJA", precio: 28.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 473CC", presentacion: "SIXPACK", precio: 7.00 },
+            { grupo: "Cerveza", nombre: "PILSENER LATA 473CC", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "PILS BOTELLA RET 330CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "PILS BOTELLA RET 330CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "PILS BOTELLA 600CC", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "PILSENER LIGHT 550", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "CLUB BOTELLA 550 CC", presentacion: "UNIDAD", precio: 1.75 },
+            { grupo: "Cerveza", nombre: "AMSTEL BOTELLA 355CC", presentacion: "CAJA", precio: 28.00 },
+            { grupo: "Cerveza", nombre: "AMSTEL BOTELLA 355CC", presentacion: "SIXPACK", precio: 7.25 },
+            { grupo: "Cerveza", nombre: "AMSTEL BOTELLA 355CC", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "AMSTEL LATA 355CC", presentacion: "SIXPACK", precio: 0.00 },
+            { grupo: "Cerveza", nombre: "AMSTEL LATA 355CC", presentacion: "UNIDAD", precio: 0.00 },
+            { grupo: "Cerveza", nombre: "AMSTEL LATA 269CC", presentacion: "CAJA", precio: 20.00 },
+            { grupo: "Cerveza", nombre: "AMSTEL LATA 269CC", presentacion: "SIXPACK", precio: 5.50 },
+            { grupo: "Cerveza", nombre: "AMSTEL LATA 269CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "BECK LATA 269CC", presentacion: "CAJA", precio: 17.00 },
+            { grupo: "Cerveza", nombre: "BECK LATA 269CC", presentacion: "SIXPACK", precio: 4.50 },
+            { grupo: "Cerveza", nombre: "BECK LATA 269CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "BIELA LATA 355CC", presentacion: "CAJA", precio: 20.00 },
+            { grupo: "Cerveza", nombre: "BIELA LATA 355CC", presentacion: "SIXPACK", precio: 5.50 },
+            { grupo: "Cerveza", nombre: "BIELA LATA 355CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "BIELA LATA 473CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "BIELA LATA 473CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "BUDWEISER LATA 269CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "BUDWEISER LATA 269CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "BUDWEISER BTLL 355cc", presentacion: "SIXPACK", precio: 9.00 },
+            { grupo: "Cerveza", nombre: "BUDWEISER BTLL 355cc", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "BUDWEISER lt 355cc", presentacion: "SIXPACK", precio: 7.50 },
+            { grupo: "Cerveza", nombre: "BUDWEISER lt 355cc", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "CLUB BOTLL 330CC", presentacion: "CAJA", precio: 26.00 },
+            { grupo: "Cerveza", nombre: "CLUB BOTLL 330CC", presentacion: "SIXPACK", precio: 7.50 },
+            { grupo: "Cerveza", nombre: "CLUB BOTLL 330CC", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "CLUB RETORNABLE 330CC", presentacion: "CAJA", precio: 28.00 },
+            { grupo: "Cerveza", nombre: "CLUB RETORNABLE 330CC", presentacion: "SIXPACK", precio: 7.50 },
+            { grupo: "Cerveza", nombre: "CLUB RETORNABLE 330CC", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "CORONA 330CC", presentacion: "CAJA", precio: 34.00 },
+            { grupo: "Cerveza", nombre: "CORONA 330CC", presentacion: "SIXPACK", precio: 9.00 },
+            { grupo: "Cerveza", nombre: "CORONA 330CC", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "CORONITA", presentacion: "CAJA", precio: 24.00 },
+            { grupo: "Cerveza", nombre: "CORONITA", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "CORONITA", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "CLUB PLATINO 355CC LATA", presentacion: "CAJA", precio: 28.00 },
+            { grupo: "Cerveza", nombre: "CLUB PLATINO 355CC LATA", presentacion: "SIXPACK", precio: 7.50 },
+            { grupo: "Cerveza", nombre: "CLUB PLATINO 355CC LATA", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 473CC", presentacion: "CAJA", precio: 20.00 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 473CC", presentacion: "SIXPACK", precio: 5.50 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 473CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 355CC", presentacion: "CAJA", precio: 18.00 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 355CC", presentacion: "SIXPACK", precio: 4.75 },
+            { grupo: "Cerveza", nombre: "SIEMBRA LATA 355CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "STELLA ARTOIS 330CC", presentacion: "CAJA", precio: 36.00 },
+            { grupo: "Cerveza", nombre: "STELLA ARTOIS 330CC", presentacion: "SIXPACK", precio: 10.00 },
+            { grupo: "Cerveza", nombre: "STELLA ARTOIS 330CC", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "STELLA LATA 250CC", presentacion: "CAJA", precio: 24.00 },
+            { grupo: "Cerveza", nombre: "STELLA LATA 250CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "STELLA LATA 250CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "HEINEKEN LATA 355CC", presentacion: "CAJA", precio: 28.00 },
+            { grupo: "Cerveza", nombre: "HEINEKEN LATA 355CC", presentacion: "SIXPACK", precio: 7.50 },
+            { grupo: "Cerveza", nombre: "HEINEKEN LATA 355CC", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Cerveza", nombre: "HEINENKEN BOTELLA", presentacion: "CAJA", precio: 32.00 },
+            { grupo: "Cerveza", nombre: "HEINENKEN BOTELLA", presentacion: "SIXPACK", precio: 8.50 },
+            { grupo: "Cerveza", nombre: "HEINENKEN BOTELLA", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "HEINENKEN LATA 269CC", presentacion: "CAJA", precio: 24.00 },
+            { grupo: "Cerveza", nombre: "HEINENKEN LATA 269CC", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "HEINENKEN LATA 269CC", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Cerveza", nombre: "MODELO 355CC", presentacion: "CAJA", precio: 48.00 },
+            { grupo: "Cerveza", nombre: "MODELO 355CC", presentacion: "SIXPACK", precio: 13.00 },
+            { grupo: "Cerveza", nombre: "MODELO 355CC", presentacion: "UNIDAD", precio: 2.25 },
+            { grupo: "Cerveza", nombre: "SOL", presentacion: "CAJA", precio: 8.50 },
+            { grupo: "Cerveza", nombre: "SOL", presentacion: "SIXPACK", precio: 31.00 },
+            { grupo: "Cerveza", nombre: "SOL", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Cerveza", nombre: "ROYAL DUCK", presentacion: "CAJA", precio: 22.00 },
+            { grupo: "Cerveza", nombre: "ROYAL DUCK", presentacion: "SIXPACK", precio: 6.00 },
+            { grupo: "Cerveza", nombre: "ROYAL DUCK", presentacion: "UNIDAD", precio: 1.00 },
+            // LICORES
+            { grupo: "Licor", nombre: "SANDY MAC", presentacion: "UNIDAD", precio: 17.00 },
+            { grupo: "Licor", nombre: "BUCHANAMS", presentacion: "UNIDAD", precio: 46.00 },
+            { grupo: "Licor", nombre: "JONNIE BLACK WHISKY", presentacion: "UNIDAD", precio: 46.00 },
+            { grupo: "Licor", nombre: "JONNIE ROJO WHISKY", presentacion: "UNIDAD", precio: 21.00 },
+            { grupo: "Licor", nombre: "BLUE BEAR", presentacion: "UNIDAD", precio: 12.00 },
+            { grupo: "Licor", nombre: "JHON MORRIS AZUL", presentacion: "UNIDAD", precio: 16.00 },
+            { grupo: "Licor", nombre: "BLACK AND WHITE", presentacion: "UNIDAD", precio: 14.00 },
+            { grupo: "Licor", nombre: "SOMETHING ESPECIAL", presentacion: "UNIDAD", precio: 20.00 },
+            { grupo: "Licor", nombre: "CHIVAS REGAL 750ML", presentacion: "UNIDAD", precio: 45.00 },
+            { grupo: "Licor", nombre: "MISTER ALLEN", presentacion: "UNIDAD", precio: 6.00 },
+            { grupo: "Licor", nombre: "CASTELLO", presentacion: "UNIDAD", precio: 5.00 },
+            { grupo: "Licor", nombre: "EL CHARRO GOLD", presentacion: "UNIDAD", precio: 16.50 },
+            { grupo: "Licor", nombre: "EL CHARRO SILVER", presentacion: "UNIDAD", precio: 16.50 },
+            { grupo: "Licor", nombre: "TEQUILA AZTECA", presentacion: "UNIDAD", precio: 15.00 },
+            { grupo: "Licor", nombre: "TRIBUTE GUITARRAWHISKY", presentacion: "UNIDAD", precio: 18.00 },
+            { grupo: "Licor", nombre: "CRISTAL GRANDE", presentacion: "UNIDAD", precio: 7.00 },
+            { grupo: "Licor", nombre: "CRISTAL PEQUEÑA", presentacion: "UNIDAD", precio: 3.50 },
+            { grupo: "Licor", nombre: "CAÑA NEGRA GRAND", presentacion: "UNIDAD", precio: 7.50 },
+            { grupo: "Licor", nombre: "CAÑA PEQUEÑA", presentacion: "UNIDAD", precio: 3.50 },
+            { grupo: "Licor", nombre: "RUSSKAYA", presentacion: "UNIDAD", precio: 7.00 },
+            { grupo: "Licor", nombre: "SIBERIAN", presentacion: "UNIDAD", precio: 7.50 },
+            { grupo: "Licor", nombre: "SWITCH", presentacion: "UNIDAD", precio: 3.00 },
+            { grupo: "Licor", nombre: "WHISKY SPECIAL QUEEN", presentacion: "UNIDAD", precio: 6.00 },
+            { grupo: "Licor", nombre: "OLD PAR", presentacion: "UNIDAD", precio: 40.00 },
+            // VINOS
+            { grupo: "Vino", nombre: "FRAILE GRANDE 750ML", presentacion: "UNIDAD", precio: 4.00 },
+            { grupo: "Vino", nombre: "FRAILE PEQUEÑO", presentacion: "UNIDAD", precio: 2.00 },
+            { grupo: "Vino", nombre: "FRAILE GRANDE 1500 ML", presentacion: "UNIDAD", precio: 8.00 },
+            { grupo: "Vino", nombre: "VIÑA MAIPO", presentacion: "UNIDAD", precio: 8.00 },
+            { grupo: "Vino", nombre: "TOCORNAL", presentacion: "UNIDAD", precio: 6.00 },
+            { grupo: "Vino", nombre: "VIEJO VIÑEDO", presentacion: "UNIDAD", precio: 5.00 },
+            { grupo: "Vino", nombre: "LAMBRUSCO", presentacion: "UNIDAD", precio: 8.00 },
+            { grupo: "Vino", nombre: "MIRAFLORES", presentacion: "UNIDAD", precio: 5.00 },
+            { grupo: "Vino", nombre: "CASILLERO DEL DIABLO", presentacion: "UNIDAD", precio: 18.00 },
+            { grupo: "Vino", nombre: "LAVID BLEND", presentacion: "UNIDAD", precio: 5.00 },
+            { grupo: "Vino", nombre: "SANGRIA", presentacion: "UNIDAD", precio: 4.25 },
+            { grupo: "Vino", nombre: "VINO BALDORE", presentacion: "UNIDAD", precio: 4.25 },
+            // BEBIDAS NO ALCOHÓLICAS
+            { grupo: "Bebida", nombre: "GUITIG 1.5 LT", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Bebida", nombre: "GUITIG 2 LT", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Bebida", nombre: "AGUA PERSONAL ALEMI", presentacion: "UNIDAD", precio: 0.30 },
+            { grupo: "Bebida", nombre: "AGUA ALEMI GALON", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "AGUA ALEMI BIDON", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "AGUA DASANI 600ML", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "AGUA DASANI 1.2L", presentacion: "UNIDAD", precio: 0.75 },
+            { grupo: "Bebida", nombre: "JUGO D.V. NARANJA 1LT", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "JUGO D.V. NARANJA 1,75LT", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "INKA", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "FANTA Y FIORA  1.35LT", presentacion: "UNIDAD", precio: 1.10 },
+            { grupo: "Bebida", nombre: "SPRITE 1.35LT", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Bebida", nombre: "COCA COLA 1LT", presentacion: "UNIDAD", precio: 1.10 },
+            { grupo: "Bebida", nombre: "COCA COLA 2LT", presentacion: "UNIDAD", precio: 2.00 },
+            { grupo: "Bebida", nombre: "COCA COLA 3LT", presentacion: "UNIDAD", precio: 3.00 },
+            { grupo: "Bebida", nombre: "COLAS 300ML", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "FUZE TEA 1L", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "NECTAR D.V CARTON 1L", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Bebida", nombre: "NECTAR D.V PEQ", presentacion: "UNIDAD", precio: 0.45 },
+            { grupo: "Bebida", nombre: "VIVE 100 PEQUEÑO", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "VIVE 100 GRANDE", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "POWER 1LT", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Bebida", nombre: "POWER 350ML", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Bebida", nombre: "LECHE TONI GRANDE", presentacion: "UNIDAD", precio: 0.90 },
+            { grupo: "Bebida", nombre: "LECHE TONI PEQ", presentacion: "UNIDAD", precio: 0.60 },
+            { grupo: "Bebida", nombre: "TONI MIX", presentacion: "UNIDAD", precio: 0.90 },
+            { grupo: "Bebida", nombre: "GELATONI", presentacion: "UNIDAD", precio: 0.85 },
+            { grupo: "Bebida", nombre: "PROFIT", presentacion: "UNIDAD", precio: 0.50 },
+            // SNACKS
+            { grupo: "Snack", nombre: "MIX PEQ", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "MIX GRANDE", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Snack", nombre: "SARITA PEQ", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "SARITA GRANDE", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Snack", nombre: "LOCO CACHOS", presentacion: "UNIDAD", precio: 0.30 },
+            { grupo: "Snack", nombre: "TOSTITOS GRANDES", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Snack", nombre: "CHIFLE GRANDE", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Snack", nombre: "CHIFLE PEQUEÑO", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "TOSTITOS PEQ", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "NACHOS GRANDES", presentacion: "UNIDAD", precio: 1.50 },
+            { grupo: "Snack", nombre: "NACHOS MEDIANOS", presentacion: "UNIDAD", precio: 0.60 },
+            { grupo: "Snack", nombre: "TOSTITOS MEDIANOS", presentacion: "UNIDAD", precio: 0.60 },
+            { grupo: "Snack", nombre: "RYSKOS PEQ", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "CARAMELOS JAZZ", presentacion: "UNIDAD", precio: 0.05 },
+            { grupo: "Snack", nombre: "CANGUILPOP", presentacion: "UNIDAD", precio: 0.60 },
+            { grupo: "Snack", nombre: "Tortolines peq", presentacion: "UNIDAD", precio: 0.60 },
+            { grupo: "Snack", nombre: "Tortolines G", presentacion: "UNIDAD", precio: 1.60 },
+            { grupo: "Snack", nombre: "TOSTACHOS PEQ", presentacion: "UNIDAD", precio: 0.50 },
+            { grupo: "Snack", nombre: "TOSTACHOS GRAND", presentacion: "UNIDAD", precio: 1.00 },
+            // OTROS (PRECIOS ACTUALIZADOS)
+            { grupo: "Otros", nombre: "HIELO", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Otros", nombre: "FOGATA", presentacion: "UNIDAD", precio: 0.10 },
+            { grupo: "Otros", nombre: "PASTA DE DIENTES", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Otros", nombre: "JABON TOCADOR", presentacion: "UNIDAD", precio: 1.25 },
+            { grupo: "Otros", nombre: "LIDER", presentacion: "UNIDAD", precio: 0.35 },
+            { grupo: "Otros", nombre: "LIDER", presentacion: "CAJA X10", precio: 3.00 },
+            { grupo: "Otros", nombre: "CARNIVAL", presentacion: "UNIDAD", precio: 0.25 },
+            { grupo: "Otros", nombre: "CARNIVAL", presentacion: "CAJA X20", precio: 3.00 },
+            { grupo: "Otros", nombre: "MALBORO D.CAP", presentacion: "UNIDAD", precio: 0.35 },
+            { grupo: "Otros", nombre: "MALBORO D.CAP", presentacion: "CAJA X10", precio: 3.00 },
+            { grupo: "Otros", nombre: "ORIS", presentacion: "UNIDAD", precio: 0.25 },
+            { grupo: "Otros", nombre: "ORIS", presentacion: "CAJA X20", precio: 3.00 },
+            { grupo: "Otros", nombre: "CORONA EN LATA", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Otros", nombre: "CLUB LATA 269", presentacion: "CAJA", precio: 22.00 },
+            { grupo: "Otros", nombre: "CLUB LATA 269", presentacion: "SIXPACK", precio: 5.50 },
+            { grupo: "Otros", nombre: "CLUB LATA 269", presentacion: "UNIDAD", precio: 1.00 },
+            { grupo: "Otros", nombre: "CLUB BOTELLA 850CC", presentacion: "UNIDAD", precio: 2.25 },
+            { grupo: "Otros", nombre: "MONSTER", presentacion: "UNIDAD", precio: 2.50 }
+        ];
+
+        // ==================== MAPA DE IMÁGENES POR PRODUCTO ====================
+        const imagenesProductos = {
+            "PILSENER LATA 269CC": "https://lh6.googleusercontent.com/Ihp8iye3bkyDeAptSStjka9Ef0TknpnFs5XeX__V9lol5xC7raQx-ZQXHluzBmkL-1a1JICFjt5dQrCb0HTNrYUcVWgnpJKS2wGdRCCer8rfbW1gi9zhrepvJjecU-Jn174SxkIAqCrQ7Yqk9OoJhsA",
+            "PILSENER LATA 355CC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTniHOn-wyQGQ7NWpUcAJm_pUqyBLwLYEkOtQ&s",
+            "PILSENER LATA 473CC": "https://pbs.twimg.com/media/EghDDMkUYAAD-Xr.jpg",
+            "PILS BOTELLA RET 330CC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeQPnzGUXiSpFOj3A1LaLUJcRtg_b7OHDNYw&s",
+            "PILS BOTELLA 600CC": "https://i0.wp.com/packagingoftheworld.com/wp-content/uploads/2023/02/Pilsener-Mundial-botella.jpg?fit=715%2C1080&ssl=1",
+            "PILSENER LIGHT 550": "https://static.wixstatic.com/media/7f4c5e_1cc39e0981f44363ad0abc3b374e1c69~mv2.jpg/v1/fill/w_520,h_520,al_c,lg_1,q_80,enc_avif,quality_auto/7f4c5e_1cc39e0981f44363ad0abc3b374e1c69~mv2.jpg",
+            "CLUB BOTELLA 550 CC": "https://mir-s3-cdn-cf.behance.net/projects/404/b235b226754143.556cec1cab0bd.jpg",
+            "AMSTEL BOTELLA 355CC": "https://i.pinimg.com/474x/f8/b1/a5/f8b1a512af41ff23c5ded0489f07f63c.jpg",
+            "AMSTEL LATA 355CC": "https://infonegocios.info/content/images/2022/07/21/204833/cerveza-Amstel1-infogourmet-enero2020.jpg",
+            "AMSTEL LATA 269CC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToKfUiT-ssipa8pBL06BpfBDbJXhy5RENmEg&s",
+            "BECK LATA 269CC": "https://www.purvisbeer.com.au/cdn/shop/files/8CFB5BE9-752B-48E6-9FFF-BB2DF4EDB88A.jpg?v=1741663707&width=533",
+            "BIELA LATA 355CC": "https://pbs.twimg.com/ext_tw_video_thumb/1316136296683843586/pu/img/AQlwCTqE5r6ltJ4M.jpg",
+            "BIELA LATA 473CC": "https://pbs.twimg.com/media/FUv0iGbWQAAkmOP.jpg",
+            "BUDWEISER LATA 269CC": "https://api.hy-vee.cloud/cdn-cgi/image/f=auto,w=640,q=60,dpr=1/https://68136a0cdc4fc8e03144-4f53ad8a42f2ace069a6df50c7ca2a3d.ssl.cf2.rackcdn.com/aee8c432-48fb-48a7-ae74-e6cd74cdfc4f_large.jpg",
+            "BUDWEISER BTLL 355cc": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRVNB6wy5F-wnhhNFMsPYuWjU38Br4g_rT3Q&s",
+            "BUDWEISER lt 355cc": "https://upload.wikimedia.org/wikipedia/commons/7/7d/Budweiser_Bottle.jpg",
+            "CLUB BOTLL 330CC": " https://bevmo.com/cdn/shop/files/5ad7629a-e47d-4fc0-98e4-4b39d3217259-background_removed_55479756-6738-47da-9bd6-15ff3ec24995.png?v=1720532734",
+            "CLUB RETORNABLE 330CC": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2024/08/9497001064-1-17.jpg",
+            "CORONA 330CC": "https://static.brandfinance.com/wp-content/uploads/2023/08/Corona-extra-scaled.jpg",
+            "CORONITA": "https://walmartni.vtexassets.com/arquivos/ids/653774/34699_02.jpg?v=638845056220030000",
+            "CLUB PLATINO 355CC LATA": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2024/08/9497004256-1-15.jpg",
+            "SIEMBRA LATA 473CC": "https://i0.wp.com/amiga.tienda/wp-content/uploads/2021/09/NUESTRA-SIEMBRA-CERVEZA-EN-LATA-473-ML-PACKX6U.png",
+            "SIEMBRA LATA 355CC": "https://pbs.twimg.com/ext_tw_video_thumb/1437133320819814404/pu/img/paRhLE80mp57-YBr.jpg",
+            "STELLA ARTOIS 330CC": "https://thumbs.dreamstime.com/b/cerveza-stella-artois-160366447.jpg",
+            "STELLA LATA 250CC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxuvLoHKwxgaMT8qlCc8B4er2JlVw7_YJRjQ&s",
+            "HEINEKEN LATA 355CC": "https://www.heineken.com/media/i41mo5tp/heineken_shot_53_344xp-for-print.jpg?width=1200&height=720&quality=85&v=1dc0f59f366aa50",
+            "HEINENKEN BOTELLA": "https://thumbs.dreamstime.com/b/phuket-thailand-october-heineken-beer-bottles-displayed-bar-counter-blurred-background-lively-pub-positioned-443185540.jpg",
+            "HEINENKEN LATA 269CC": " https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/12/7861122302136-1-1.png",
+            "MODELO 355CC": "https://www.heineken.com/media/i41mo5tp/heineken_shot_53_344xp-for-print.jpg?width=1200&height=720&quality=85&v=1dc0f59f366aa50",
+            "SOL": "https://olimpica.vtexassets.com/arquivos/ids/1488568/7702090067323.jpg?v=638627262388530000",
+            "ROYAL DUCK": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvbxbuMliud3fB-WNTHj9-bCd4fSZFu5R3YA&s",
+            "SANDY MAC": "https://http2.mlstatic.com/D_NQ_NP_861988-MLA92838188641_092025-O.webp",
+            "BUCHANAMS": "https://m.media-amazon.com/images/I/71RmTiPjZQL._AC_UF350,350_QL80_.jpg",
+            "JONNIE BLACK WHISKY": "https://images.ctfassets.net/waruwpig3jxu/rYk8WxpJ1ellZvibRckWT/0e8df23f16b39c6d986faf6f68af8fee/black-750ml_producthero_lifestyle-01_desktop.webp?&w=2560&q=80",
+            "JONNIE ROJO WHISKY": "https://iber.uy/web/image/677383/5000267014005_2.jpg?access_token=24fe80e1-4977-4e5c-b1ea-d54fff85b69c",
+            "BLUE BEAR": "https://www.grupocavem.com/wp-content/uploads/2025/09/BlueBear750.webp",
+            "JHON MORRIS AZUL": "https://pbs.twimg.com/media/EdpsJr-X0AAElPb.jpg",
+            "BLACK AND WHITE": "https://external-preview.redd.it/review-black-white-blended-scotch-v0-1bkrxekawoJHz0QdTPW6IF1nF_9NGMotLZftIMn_Iqo.jpg?width=1080&crop=smart&auto=webp&s=3345995ec913cbe3a18991b2e382575a2eabe6cf",
+            "SOMETHING ESPECIAL": "https://www.pernod-ricard.com/sites/default/files/styles/brand_tile_3_in_row_desktop_958x1048_/public/2021-06/brand-something-special-lifestyle-original.jpg.jpg?h=d94c4b90&itok=Tc15iFo7",
+            "CHIVAS REGAL 750ML": "https://grapeandgrainwarehouse.co.uk/cdn/shop/files/42530681-4BCF-4757-93DE-3DE3505294E6.jpg?v=1724158330",
+            "MISTER ALLEN": " https://domun.co/default/image-tool-lambda?new-width=700&new-height=700&new-quality=80&url-image=https%3A%2F%2Fsumerlabs.com%2Fsumer-app-90b8f.appspot.com%2Fproduct_photos%252Fe61d25d39556c42e1a90ecd49583f902%252F3a0423f0-7694-11ec-b743-2df784babd99%3Falt%3Dmedia%26token%3D2155ad92-76fb-4e66-9986-76c13769ffaf",
+            "CASTELLO": "  https://discostarica.com/wp-content/uploads/2022/08/001b62db-eb56-451d-9645-17ec3aa16d2d.jpg",
+            "EL CHARRO GOLD": "https://walmartsv.vtexassets.com/arquivos/ids/619626-800-450?v=638687798089130000&width=800&height=450&aspect=true",
+            "EL CHARRO SILVER": "https://www.southernspirits.com/cdn/shop/files/DSC02399_1024x1024.jpg?v=1728673328",
+            "TEQUILA AZTECA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKDLRw6Kuza30kXKvucd_4ERenNZ5p2SfXvg&s",
+            "TRIBUTE GUITARRAWHISKY": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBTrssmkqk0TAvu1WQ26JWmreIxPfI7w9aqg&s",
+            "CRISTAL GRANDE": "https://platform-ps-files.s3.us-east-2.amazonaws.com/images/origin/large_Passion_Spirits_Cristal_Aguardiente_3_dad01dbc11.jpg",
+            "CRISTAL PEQUEÑA": "https://cdn11.bigcommerce.com/s-0ddlsmhg83/images/stencil/original/products/14722/15028/aguardiente-cristal-sin-azucar-colombian-liqueur__28353.1752495899.1280.1280__64525.1755244021.jpg?c=1",
+            "CAÑA NEGRA GRAND": "https://images.rumratings.com/uploads/brand/image/1660/medium_Cana_Negra_Gran_Reserva_rum.webp?v=1741230833",
+            "CAÑA PEQUEÑA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREjBrTMCMBB_42p36afkwZpDcFn-4QrJFY3w&s",
+            "RUSSKAYA": "https://wongfood.vtexassets.com/arquivos/ids/720668/181982-1.jpg?v=638597758247800000",
+            "SIBERIAN": "https://www.about-drinks.com/wp-content/uploads/2025/04/Siberian-Express-Vodka-5-1.webp",
+            "SWITCH": "https://laboladeoroquito.com/wp-content/uploads/2025/02/SWITCH-BONGO-BONGO-1.5LT-LA-BOLA-DE-ORO-QUITO-scaled.jpg",
+            "WHISKY SPECIAL QUEEN": "https://www.licoram.com/wp-content/uploads/2024/01/licoram-special-queen-2.webp",
+            "OLD PAR": "https://www.totalwine.com/dynamic/x1000,sq/images/244901750/244901750-1-fr.png",
+            "FRAILE GRANDE 750ML": "https://laboladeoroquito.com/wp-content/uploads/2025/02/EL-FRAILE-VINO-TINTO-750ML-LA-BOLA-DE-ORO-QUITO-scaled.jpg",
+            "FRAILE PEQUEÑO": "https://laboladeoroquito.com/wp-content/uploads/2025/02/EL-FRAILE-VINO-DULCE-375ML-LA-BOLA-DE-ORO-QUITO-scaled.jpg",
+            "FRAILE GRANDE 1500 ML": "https://laboladeoroquito.com/wp-content/uploads/2025/02/EL-FRAILE-VINO-TINTO-1500ML-LA-BOLA-DE-ORO-QUITO-scaled.jpg",
+            "VIÑA MAIPO": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHebVsgC4C4iDalt9gkEwKEQRPkzTEsekKADF0FvaEZg&s=10",
+            "TOCORNAL": "https://media-cdn.tripadvisor.com/media/photo-m/1280/16/b2/11/d7/tocornal-cabernet-sauvignon.jpg",
+            "VIEJO VIÑEDO": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEythh79bx4HlCHL2UTIJncM5udrdfexqldQ&s",
+            "LAMBRUSCO": "https://www.totalwine.com/dynamic/x1000,sq/images/2631750/2631750-1-fr.png",
+            "MIRAFLORES": "https://http2.mlstatic.com/D_NQ_NP_736707-MLU74140362834_012024-O.webp",
+            "CASILLERO DEL DIABLO": "https://conchaytoro.com/wp-content/uploads/2018/07/7X1A7469-editada-min.webp",
+            "LAVID BLEND": "https://cdn.awsli.com.br/800x800/834/834025/produto/44488013/de691b1403.jpg",
+            "SANGRIA": "https://vinosylicores.com/cdn/shop/files/SALUTZOSANGRIA.jpg?v=1751663934",
+            "VINO BALDORE": "https://static.wixstatic.com/media/88dbbb_f5291e6ae56148bbb1b69a3c4db0626d~mv2.png/v1/fill/w_480,h_480,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/88dbbb_f5291e6ae56148bbb1b69a3c4db0626d~mv2.png",
+            "GUITIG 1.5 LT": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2024/08/759494003508-1-4.jpg",
+            "GUITIG 2 LT": "https://m.media-amazon.com/images/I/41BiStHkLcL._AC_UF894,1000_QL80_.jpg",
+            "AGUA PERSONAL ALEMI": "https://m.media-amazon.com/images/I/514eSnu5PnL._AC_UF894,1000_QL80_.jpg",
+            "AGUA ALEMI GALON": "https://m.media-amazon.com/images/I/31YLWbcBhJL.jpg",
+            "AGUA ALEMI BIDON": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTO6SdyE0_83dbxaTX7el3Ra0w7k0yAiGNIsA&s",
+            "AGUA DASANI 600ML": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/06/7861024621076-1-5.jpg",
+            "AGUA DASANI 1.2L": "https://farmaenlace.vtexassets.com/arquivos/ids/174707/0000139826-1.jpg?v=638500863636000000",
+            "JUGO D.V. NARANJA 1LT": "https://m.media-amazon.com/images/I/41QtxymW5xL.jpg",
+            "JUGO D.V. NARANJA 1,75LT": " https://mercadomi.com.ec/wp-content/uploads/2024/11/0047.jpg",
+            "INKA": "https://www.coca-cola.com/content/dam/onexp/pe/es/brands/incakola/homepage_incakola_desktop.jpg",
+            "FANTA Y FIORA  1.35LT": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHgYIEVqLO2sfrmflq9kF8Hv97_hwhY5jU_42FAIKtIg&s=10",
+            "SPRITE 1.35LT": "https://maxmarket.ec/wp-content/uploads/2023/11/max-market-42.png",
+            "COCA COLA 1LT": "https://imagenes.heraldo.es/files/image_990_556/uploads/imagenes/2014/05/07/_cocacola_695e79d1.jpg",
+            "COCA COLA 2LT": "https://i5.walmartimages.com/asr/ecd01808-b785-4eaf-830d-81465657fa97.ed8ff2135314831c1c115a83cce1fcde.jpeg",
+            "COCA COLA 3LT": "https://i5.walmartimages.com/seo/Coca-Cola-Soda-Pop-3-Liters-Bottle_2e1b2a0b-5c68-4cab-86ca-0f2070e2e9b7.41480ac38aab5b6159e338a6c995eade.jpeg",
+            "COLAS 300ML": "https://s3.amazonaws.com/takami.co/CACHE/images/productimage/93f4324fba3b4df292b11bfa856e4812/vxcwrlu4ktfgpdex3bjqvb/735faed0c2e13014523dc02db2f626b4.jpg",
+            "FUZE TEA 1L": "https://st3.depositphotos.com/1063437/31980/i/450/depositphotos_319800522-stock-photo-plastic-bottles-of-fuze-ice.jpg",
+            "NECTAR D.V CARTON 1L": " https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw60c83a2e/images/large/100049324_1.jpg?sw=1000&sh=1000",
+            "NECTAR D.V PEQ": " https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYh8_igodeXMxUoh-mx4hVVhvh_x2j4bL6uA&s",
+            "VIVE 100 PEQUEÑO": "https://static.compreloadomicilio.com/juanfierro/products/0849/62cb49d8dc8b0557188105.webp",
+            "VIVE 100 GRANDE": "https://i5.walmartimages.com/asr/744a8772-3a83-4687-96a5-ccc91297e84c.b50c74d2ae558151e10664c8c7c06363.png?odnHeight=768&odnWidth=768&odnBg=FFFFFF",
+            "POWER 1LT": "https://tolivmarket-production.s3.sa-east-1.amazonaws.com/products/a0d831dbddaa30691a1a8654f70346b01d1f6c7221d071a0d36b28708f09695b.jpg",
+            "POWER 350ML": "https://i5.walmartimages.com.mx/samsmx/images/product-images/img_large/980043199l.jpg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+            "LECHE TONI GRANDE": "https://mercadomi.com.ec/wp-content/uploads/2024/12/0566.jpg",
+            "LECHE TONI PEQ": "https://m.media-amazon.com/images/I/41LEjQoe9mL._AC_UF894,1000_QL80_.jpg",
+            "TONI MIX": "https://pideok.myshopify.com/cdn/shop/products/IMG_0725.JPG?v=1511303776",
+            "GELATONI": "https://www.tonicorp.com/wp-content/uploads/2025/04/gelatoni-fresa-200g.webp",
+            "PROFIT": "https://competition.adesignaward.com/award-winner-design-1200.php?ID=29504",
+            "MIX PEQ": "https://www.tonicorp.com/wp-content/uploads/2025/04/yogurt-toni-mix-fruit-galletas-180g-1024x1024.webp",
+            "MIX GRANDE": "https://www.tonicorp.com/wp-content/uploads/2025/04/yogurt-toni-mix-frutilla-180g.webp",
+            "SARITA PEQ": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-BlwcGbN8bI-7YijqQQ4hsdzdgLOVVOI__w&s",
+            "SARITA GRANDE": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNSAFuTE90nJaNw3zdMOA8NeRPmD6bVKjmCA&s",
+            "LOCO CACHOS": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dwde6adb34/images/large/100178234-SNACK-LOCACHOS-INALECSA-PICANTES-14-G-UNIDAD.jpg?sw=1000&sh=1000",
+            "TOSTITOS GRANDES": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/10/7861006744342-1.jpg",
+            "CHIFLE GRANDE": "https://i.ytimg.com/vi/8m0kk2e9gFg/oar2.jpg?sqp=-oaymwEYCJUDENAFSFqQAgHyq4qpAwcIARUAAIhC&rs=AOn4CLAR7JvD1bFJzAzz0wwtxAG8G-3sqQ",
+            "CHIFLE PEQUEÑO": "https://banchis.com/wp-content/uploads/2020/02/45-natural.png",
+            "TOSTITOS PEQ": "https://mercadomi.com.ec/wp-content/uploads/2024/12/4243.png",
+            "NACHOS GRANDES": "https://mercadomi.com.ec/wp-content/uploads/2024/12/27909_G.jpg",
+            "NACHOS MEDIANOS": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw442ae92a/images/large/16910-SNACK-NACHOS-QUESO-45-G-PAQUETE.JPG?sw=1000&sh=1000",
+            "TOSTITOS MEDIANOS": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw22c14ad4/images/large/16909-SNACK-TOSTITOS-45-G-PAQUETE.JPG?sw=1000&sh=1000",
+            "RYSKOS PEQ": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/10/7861006752033-1-10.jpg",
+            "CARAMELOS JAZZ": "https://proferquimsa.com.ec/wp-content/uploads/2021/07/caramelos-jazz.jpg",
+            "CANGUILPOP": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoE_kTYOddQPgXmVHFZadf3bUTas7-cftmfw&s",
+            "Tortolines peq": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/09/7861006748043-1-1.jpg",
+            "Tortolines G": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm1vZOpJM1AfnGwvA_yI9Do0YcbJOwfQZ2fw&s",
+            "TOSTACHOS PEQ": "https://supermaxi-225de.kxcdn.com/wp-content/uploads/2025/09/7861006747831-1-6.jpg",
+            "TOSTACHOS GRAND": "https://saboresdmitierra.com/cdn/shop/files/tostachos.jpg?v=1689696613",
+            "HIELO": "https://www.polystarco.com/upload/catalog_solutions_list_pic/high-quality%20ice%20bags%20for%20cooling%20and%20chilling__23L08hUjrK.png",
+            "FOGATA": "https://www.fesa.la/wp-content/uploads/2018/10/fogata2.png",
+            "PASTA DE DIENTES": "https://m.media-amazon.com/images/I/81alT2xrRAL._AC_UF1000,1000_QL80_.jpg",
+            "JABON TOCADOR": "https://lagranbodega.vteximg.com.br/arquivos/ids/294147-1000-1000/012388000022.jpg?v=638258199601600000",
+            "LIDER": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_bJZjXwZWeG4MwTxjzc_Rb3ZVMX_U7yR4vg&s",
+            "CARNIVAL": "https://coheto.com/wp-content/uploads/2024/12/Cigarrillos_Carnival_Change_Double_20_Unidades_Entera.jpeg",
+            "MALBORO D.CAP": "https://i.ebayimg.com/images/g/r0kAAeSwDB5o9Ejz/s-l400.jpg",
+            "ORIS": "https://img1.elyerromenu.com/images/perez-quesada/cigarros-oris/img.webp",
+            "CORONA EN LATA": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxu1mAL3btPZFyhURcRF_m70gie8LCxMYz7A&s",
+            "CLUB LATA 269": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8RCh1TLreqc67KLarMlRADiKwCYS3okv9KQ&s",
+            "CLUB BOTELLA 850CC": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdMsd23-8MH7kgu6wKd0gYiqk-stY79JJF3g&s",
+            "MONSTER": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Monster_Energy_drink_%28cropped%29.jpg/960px-Monster_Energy_drink_%28cropped%29.jpg"
+        };
+
+        const imagenPorDefecto = "https://pngimg.com/d/beer_bottle_PNG2379.png";
+
+        const productosPopulares = new Set([
+            "CORONA 330CC", "HEINEKEN LATA 355CC", "STELLA ARTOIS 330CC",
+            "PILSENER LATA 355CC", "CHIVAS REGAL 750ML", "BUCHANAMS",
+            "COCA COLA 2LT", "CASILLERO DEL DIABLO", "MODELO 355CC"
+        ]);
+
+        function agruparProductos() {
+            const mapa = new Map();
+            productosRaw.forEach(p => {
+                const key = p.nombre;
+                if (!mapa.has(key)) {
+                    mapa.set(key, { grupo: p.grupo, nombre: key, opciones: [] });
+                }
+                mapa.get(key).opciones.push({ tipo: p.presentacion, precio: p.precio });
+            });
+            return Array.from(mapa.values());
+        }
+
+        const productosAgrupados = agruparProductos();
+
+        function obtenerImagenProducto(nombreProducto) {
+            if (imagenesProductos[nombreProducto]) {
+                return imagenesProductos[nombreProducto];
+            }
+            return imagenPorDefecto;
+        }
+
+        function esProductoPopular(nombre) {
+            return productosPopulares.has(nombre);
+        }
+
+        let cart = [];
+        function saveCart() { localStorage.setItem('famisariato_cart', JSON.stringify(cart));
+            renderCart(); }
+
+        function loadCart() { const saved = localStorage.getItem('famisariato_cart'); if (saved) { cart = JSON.parse(
+                saved); } renderCart(); }
+
+        function roundToTwoDecimals(value) {
+            return Math.round(value * 100) / 100;
+        }
+
+        function renderCart() {
+            const container = document.getElementById('cartItemsContainer');
+            const totalsDiv = document.getElementById('cartTotals');
+            if (!container) return;
+            if (cart.length === 0) {
+                container.innerHTML =
+                    `<div class="empty-cart"><i class="fas fa-wine-bottle"></i><p>Tu carrito está vacío. Agrega productos desde el catálogo.</p></div>`;
+                totalsDiv.innerHTML = '';
+                return;
+            }
+            let html = '';
+            let subtotalGlobal = 0;
+            cart.forEach((item, idx) => {
+                const itemTotal = item.unitPrice * item.quantity;
+                subtotalGlobal += itemTotal;
+                html += `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <span class="cart-item-name">${item.productName}</span>
+                        <div class="cart-item-detail">${item.quantity} x ${item.optionType} ($${item.unitPrice.toFixed(2)} c/u)</div>
+                    </div>
+                    <div class="cart-item-price">$${itemTotal.toFixed(2)}</div>
+                    <button class="remove-item" data-index="${idx}"><i class="fas fa-trash-alt"></i> Quitar</button>
+                </div>`;
+            });
+            const total = roundToTwoDecimals(subtotalGlobal);
+            container.innerHTML = html;
+            totalsDiv.innerHTML = `
+                <div class="total-row-cart"><span>💰 Subtotal:</span><span>$${total.toFixed(2)}</span></div>
+                <div class="total-row-cart final"><span>💎 TOTAL A PAGAR:</span><span>$${total.toFixed(2)}</span></div>`;
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = parseInt(btn.dataset.index);
+                    cart.splice(idx, 1);
+                    saveCart();
+                });
+            });
+        }
+
+        function showFancyToast(productName, quantity, optionType) {
+            const toast = document.createElement('div');
+            toast.className = 'toast-notification';
+            toast.innerHTML =
+                `<i class="fas fa-check-circle"></i> ¡AGREGADO! ${quantity} ${optionType} de ${productName} al carrito.`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.35s ease forwards';
+                setTimeout(() => { if (toast.parentNode) toast.remove(); }, 400);
+            }, 2800);
+            if (!document.querySelector('#toastKeyframe')) {
+                const style = document.createElement('style');
+                style.id = 'toastKeyframe';
+                style.textContent =
+                    `@keyframes slideOutRight { from { transform: translateX(0); opacity: 1; } to { transform: translateX(120%); opacity: 0; } }`;
+                document.head.appendChild(style);
+            }
+        }
+
+        function renderizarCatalogo() {
+            const grid = document.getElementById('cardsGrid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            productosAgrupados.forEach(prod => {
+                const opcionesHtml = prod.opciones.map(opt =>
+                    `<span>${opt.tipo}: $${opt.precio.toFixed(2)}</span>`).join('');
+                let categoriaVisual = "Cerveza";
+                let icono = "fa-beer";
+                let categoriaFiltro = "cerveza";
+                if (prod.grupo === "Vino" || prod.grupo === "Licor") {
+                    categoriaVisual = "Vinos & Licores";
+                    icono = "fa-wine-glass-alt";
+                    categoriaFiltro = "vino";
+                } else if (prod.grupo === "Bebida" || prod.grupo === "Snack" || prod.grupo === "Otros") {
+                    categoriaVisual = "Bebidas & Snacks";
+                    icono = "fa-glass-whiskey";
+                    categoriaFiltro = "bebidas";
+                }
+                const imagenUrl = obtenerImagenProducto(prod.nombre);
+                const esPopular = esProductoPopular(prod.nombre);
+                const badgeHTML = esPopular ?
+                    '<span class="card-badge-top">🔥 POPULAR</span>' : '';
+                const card = document.createElement('div');
+                card.className = 'card reveal';
+                card.setAttribute('data-category', categoriaFiltro);
+                card.setAttribute('data-name', prod.nombre.toLowerCase());
+                card.innerHTML = `
+                    <div class="card-shimmer"></div>
+                    ${badgeHTML}
+                    <img src="${imagenUrl}" class="card-img" alt="${prod.nombre}" onerror="this.src='${imagenPorDefecto}'" loading="lazy">
+                    <div class="card-overlay">
+                        <div class="card-meta">
+                            <span><i class="fas ${icono}"></i> ${categoriaVisual}</span>
+                            <span class="meta-dot"></span>
+                            <span>${prod.nombre.substring(0, 18)}</span>
+                        </div>
+                        <h3>${prod.nombre}</h3>
+                        <div class="price-list"><i class="fas fa-tag" style="color:var(--gold);margin-right:4px;"></i> ${opcionesHtml}</div>
+                        <p class="card-cta-hint">Click para elegir →</p>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            bindCardClick();
+            allCards = Array.from(document.querySelectorAll('.card'));
+            applyFiltersAndSearch();
+        }
+
+        let currentProductCard = null;
+        let currentOptions = [];
+        let selectedOptIndex = 0;
+        let currentQtyModal = 1;
+        const modal = document.getElementById('productModal');
+        const modalTitle = document.getElementById('modalProductTitle');
+        const optionsDiv = document.getElementById('optionsRadios');
+        const noOptMsg = document.getElementById('noOptionsMsg');
+        const qtySpan = document.getElementById('qtyValue');
+        const subtotalSpan = document.getElementById('subtotalSpan');
+        const totalSpan = document.getElementById('totalSpan');
+
+        function updateModalTotals() {
+            if (!currentOptions.length) return;
+            const opt = currentOptions[selectedOptIndex];
+            const sub = opt.price * currentQtyModal;
+            const subRedondeado = roundToTwoDecimals(sub);
+            subtotalSpan.innerText = `$${subRedondeado.toFixed(2)}`;
+            totalSpan.innerText = `$${subRedondeado.toFixed(2)}`;
+        }
+
+        function renderModalOptions() {
+            if (!currentOptions.length) { optionsDiv.innerHTML = '';
+                noOptMsg.style.display = 'block'; return; }
+            noOptMsg.style.display = 'none';
+            let html = '';
+            currentOptions.forEach((opt, i) => {
+                html +=
+                    `<label><input type="radio" name="modalOpt" value="${i}" ${i===selectedOptIndex?'checked':''}> ${opt.tipo} <span class="price-badge">$${opt.price.toFixed(2)}</span></label>`;
+            });
+            optionsDiv.innerHTML = html;
+            document.querySelectorAll('input[name="modalOpt"]').forEach(r => {
+                r.addEventListener('change', (e) => { selectedOptIndex = parseInt(e.target.value);
+                    updateModalTotals(); });
+            });
+            updateModalTotals();
+        }
+
+        function openModalFromCard(card) {
+            currentProductCard = card;
+            const titleEl = card.querySelector('h3');
+            const productName = titleEl ? titleEl.innerText : 'Producto';
+            modalTitle.innerText = productName;
+            const agrupado = productosAgrupados.find(p => p.nombre === productName);
+            if (agrupado) {
+                currentOptions = agrupado.opciones.map(opt => ({ tipo: opt.tipo, price: opt.precio }));
+            } else {
+                currentOptions = [];
+            }
+            if (currentOptions.length === 0) currentOptions.push({ tipo: 'Unidad', price: 0.0 });
+            selectedOptIndex = 0;
+            currentQtyModal = 1;
+            qtySpan.innerText = currentQtyModal;
+            renderModalOptions();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            currentProductCard = null;
+            document.body.style.overflow = '';
+        }
+
+        document.getElementById('decrementQty')?.addEventListener('click', () => { if (currentQtyModal > 1)
+                currentQtyModal--;
+            qtySpan.innerText = currentQtyModal;
+            updateModalTotals(); });
+        document.getElementById('incrementQty')?.addEventListener('click', () => { currentQtyModal++;
+            qtySpan.innerText = currentQtyModal;
+            updateModalTotals(); });
+        document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+        window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.style.display === 'flex')
+            closeModal(); });
+
+        document.getElementById('addToCartBtn')?.addEventListener('click', () => {
+            if (!currentProductCard || !currentOptions.length) return;
+            const productName = modalTitle.innerText;
+            const selected = currentOptions[selectedOptIndex];
+            const qty = currentQtyModal;
+            const existingIndex = cart.findIndex(item => item.productName === productName && item
+                .optionType === selected.tipo);
+            if (existingIndex !== -1) cart[existingIndex].quantity += qty;
+            else cart.push({ id: Date.now() + Math.random(), productName, optionType: selected.tipo,
+                quantity: qty, unitPrice: selected.price });
+            saveCart();
+            showFancyToast(productName, qty, selected.tipo);
+            closeModal();
+        });
+
+        document.getElementById('ubicacionBtn')?.addEventListener('click', () => { window.open(
+                'https://maps.app.goo.gl/o1eCcg8PG68WtMLo7', '_blank'); });
+
+        document.getElementById('finalWhatsappBtn')?.addEventListener('click', () => {
+            if (cart.length === 0) { alert('🛒 Agrega productos al carrito primero'); return; }
+            let mensaje = "Hola, quiero realizar el siguiente pedido:%0A%0A";
+            cart.forEach(item => { mensaje +=
+                    `• ${item.quantity} ${item.optionType}${item.quantity!==1?'s':''} de ${item.productName}%0A`; });
+            mensaje += `%0A¡Gracias! 🙌`;
+            window.open(`https://api.whatsapp.com/send?phone=593979017728&text=${mensaje}`, '_blank');
+        });
+
+        let allCards = [],
+            activeFilter = 'all',
+            currentSearchTerm = '';
+
+        function applyFiltersAndSearch() {
+            const term = currentSearchTerm.trim().toLowerCase();
+            document.querySelectorAll('.no-results')?.forEach(el => el.remove());
+            let hasVisible = false;
+            allCards.forEach(card => {
+                const cat = card.getAttribute('data-category');
+                const title = card.querySelector('h3')?.innerText.toLowerCase() || '';
+                const meta = card.querySelector('.card-meta')?.innerText.toLowerCase() || '';
+                const full = title + ' ' + meta;
+                let catMatch = activeFilter === 'all' || activeFilter === cat;
+                let searchMatch = term === '' || full.includes(term);
+                if (catMatch && searchMatch) { card.style.display = '';
+                    hasVisible = true; } else card.style.display = 'none';
+            });
+            if (!hasVisible && allCards.length) {
+                const grid = document.getElementById('cardsGrid');
+                const noDiv = document.createElement('div');
+                noDiv.className = 'no-results';
+                noDiv.innerHTML =
+                    `<i class="fas fa-search"></i><p>No encontramos "${term}"</p><p style="font-size:0.85rem;">Prueba con: Corona, Heineken, Pilsener, Coca Cola</p>`;
+                grid.appendChild(noDiv);
+            }
+        }
+
+        document.getElementById('searchBtn')?.addEventListener('click', () => { currentSearchTerm = document
+                .getElementById('searchInput').value;
+            applyFiltersAndSearch(); });
+        document.getElementById('searchInput')?.addEventListener('input', (e) => { currentSearchTerm = e.target
+                .value;
+            applyFiltersAndSearch(); });
+        document.getElementById('searchInput')?.addEventListener('keydown', (e) => { if (e.key === 'Enter') {
+                currentSearchTerm = e.target.value;
+                applyFiltersAndSearch(); } });
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilter = btn.getAttribute('data-filter');
+                applyFiltersAndSearch();
+            });
+        });
+
+        function bindCardClick() {
+            document.querySelectorAll('.card').forEach(card => {
+                card.removeEventListener('click', cardClickHandler);
+                card.addEventListener('click', cardClickHandler);
+            });
+        }
+
+        function cardClickHandler(e) { e.stopPropagation();
+            openModalFromCard(this); }
+
+        function init() {
+            renderizarCatalogo();
+            loadCart();
+            const revealObserver = () => {
+                document.querySelectorAll('.reveal').forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add(
+                        'active');
+                });
+            };
+            window.addEventListener('scroll', revealObserver, { passive: true });
+            revealObserver();
+            crearBurbujas();
+            crearParticulasDoradas();
+        }
+
+        function crearBurbujas() {
+            const cont = document.getElementById('bubbles-container');
+            if (!cont) return;
+            for (let i = 0; i < 40; i++) {
+                let b = document.createElement('div');
+                b.classList.add('bubble');
+                b.style.width = Math.random() * 16 + 4 + 'px';
+                b.style.height = b.style.width;
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDuration = Math.random() * 8 + 3 + 's';
+                b.style.animationDelay = Math.random() * 10 + 's';
+                cont.appendChild(b);
+            }
+        }
+
+        function crearParticulasDoradas() {
+            const cont = document.getElementById('bubbles-container');
+            if (!cont) return;
+            for (let i = 0; i < 25; i++) {
+                let p = document.createElement('div');
+                p.classList.add('particula-dorada');
+                p.style.left = Math.random() * 100 + 'vw';
+                p.style.animationDuration = Math.random() * 10 + 6 + 's';
+                p.style.animationDelay = Math.random() * 8 + 's';
+                p.style.width = Math.random() * 3 + 1 + 'px';
+                p.style.height = p.style.width;
+                cont.appendChild(p);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
